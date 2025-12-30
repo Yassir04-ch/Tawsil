@@ -5,92 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Livreur - Opportunités</title>
+    <title>SHIPUP - Plateforme de Livraison Collaborative</title>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-white font-sans text-slate-900">
 
-    <nav class="bg-white shadow-md p-4 flex justify-between items-center px-10 border-b-4 border-amber-500">
-        <h1 class="text-2xl font-black text-slate-800">SHIP<span class="text-amber-500">GO</span></h1>
-        <div class="flex items-center gap-6">
-            <div class="text-right">
-                <p class="text-sm font-bold">Mohammed Livreur</p>
-                <p class="text-xs text-amber-600 font-semibold">⭐ 4.8 (24 Avis)</p>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <h1 class="text-2xl font-black text-blue-900 tracking-tight">LMSAKHAR<span class="text-blue-600">GO</span></h1>
             </div>
-            <div class="h-10 w-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+            
+            <div class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                <a href="#comment-ca-marche" class="hover:text-blue-600 transition">Comment ça marche ?</a>
+                <a href="#" class="hover:text-blue-600 transition">Tarifs</a>
+                <a href="login.php" class="text-slate-900 hover:text-blue-600 transition">Connexion</a>
+                <a href="register.php" class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">S'inscrire</a>
+            </div>
         </div>
     </nav>
 
-    <div class="container mx-auto p-6">
-        <div class="flex flex-col md:flex-row gap-6">
-            
-            <aside class="w-full md:w-1/4 space-y-4">
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-                    <h3 class="font-bold mb-4 text-gray-700 underline decoration-amber-400">Filtres</h3>
-                    <div class="space-y-3">
-                        <label class="block text-sm">Type de Véhicule</label>
-                        <select class="w-full p-2 border rounded-md text-sm bg-gray-50 outline-none">
-                            <option>Tous</option>
-                            <option>Moto 🏍️</option>
-                            <option>Voiture 🚗</option>
-                            <option>Camion 🚚</option>
-                        </select>
-                    </div>
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-widest">🚀 Livraison 2.0</span>
+                <h2 class="text-5xl lg:text-7xl font-black text-slate-900 leading-tight mt-6">
+                    Expédiez tout, <br> <span class="text-blue-600">partout, par tous.</span>
+                </h2>
+                <p class="text-xl text-slate-500 mt-6 leading-relaxed max-w-lg">
+                    Mettez en relation vos colis avec des livreurs certifiés. Simple, rapide et au meilleur prix grâce au système d'enchères.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-10">
+                    <a href="register.php" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition text-center">
+                        Expédier un colis
+                    </a>
+                    <a href="register.php" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-800 transition text-center">
+                        Devenir Livreur
+                    </a>
                 </div>
-            </aside>
-
-            <main class="w-full md:w-3/4">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-gray-800 italic">Commandes Disponibles 📦</h2>
-                    <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold">8 Nouvelles annonces</span>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-amber-500 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-2 text-xs font-bold text-gray-400">
-                                <span>Réf: #CMD-5541</span> • <span>Il y a 10 min</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-800 uppercase">Livraison Électroménager (Frigo)</h3>
-                            <div class="flex gap-4 mt-3 text-sm text-gray-600">
-                                <p><i class="fa-solid fa-location-dot text-red-500"></i> De: <b>Casablanca</b></p>
-                                <p><i class="fa-solid fa-map-pin text-emerald-500"></i> À: <b>Rabat</b></p>
-                            </div>
-                            <div class="mt-2">
-                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-semibold">Fragile</span>
-                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-semibold">Express</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 md:mt-0 text-center md:text-right">
-                            <p class="text-xs text-gray-400 mb-2">3 Offres déjà envoyées</p>
-                            <button class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-500 transition shadow-lg">
-                                Faire une offre 🚀
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-amber-500 flex flex-col md:flex-row justify-between items-start md:items-center">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-2 text-xs font-bold text-gray-400">
-                                <span>Réf: #CMD-5520</span> • <span>Il y a 1 heure</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-gray-800 uppercase">Documents Confidentiels</h3>
-                            <div class="flex gap-4 mt-3 text-sm text-gray-600">
-                                <p><i class="fa-solid fa-location-dot text-red-500"></i> De: <b>Marrakech</b></p>
-                                <p><i class="fa-solid fa-map-pin text-emerald-500"></i> À: <b>Settat</b></p>
-                            </div>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <button class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-500 transition">
-                                Faire une offre 🚀
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
+            </div>
+            <div class="relative">
+                <div class="absolute -z-10 top-10 right-10 w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-50"></div>
+                <img src="https://img.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg" alt="Livraison" class="rounded-3xl shadow-2xl">
+            </div>
         </div>
-    </div>
+    </section>
 
+    <section id="comment-ca-marche" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-black text-slate-900">Une plateforme, trois profils</h3>
+            <p class="text-slate-500 mt-2">Tout est conçu pour faciliter le flux de livraison.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Côté Client</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Créez votre commande, recevez des offres de prix de différents livreurs et choisissez la meilleure option.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Côté Livreur</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Consultez les commandes disponibles, proposez votre prix et votre véhicule, et rentabilisez vos trajets.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Administration</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Une supervision totale des flux, des utilisateurs et des statistiques pour garantir la sécurité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-slate-100 text-center">
+        <p class="text-slate-400 text-sm">© 2025 SHIPUP Digital Solutions. Tous droits réservés.</p>
+    </footer>
+
+    <a href="admin.php">admin</a>
+    <a href="client.php">client</a>
+    <a href="livreur.php">livreur</a>
 </body>
 </html>
