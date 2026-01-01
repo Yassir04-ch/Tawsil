@@ -15,7 +15,8 @@
                 <div class="bg-blue-600 p-2 rounded-lg text-white">
                     <i class="fa-solid fa-paper-plane"></i>
                 </div>
-                <h1 class="text-2xl font-black text-blue-900 tracking-tight">LMSAKHAR<span class="text-blue-600">GO</span></h1>
+                           <h1 class="text-3xl font-black text-slate-900 tracking-tighter italic">Lmsakher<span class="text-blue-600">GO</span></h1>
+
             </div>
             
             <div class="hidden md:flex items-center gap-8 font-semibold text-slate-600">

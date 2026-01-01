@@ -3,48 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LmsakherGO - Connexion</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Connexion - SHIPUP</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center py-12 px-6">
+<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
 
-    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden mt-8">
-        <div class="p-8">
-            <div class="text-center mb-10">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-2xl mb-4 shadow-lg shadow-blue-200">
-                    <i class="fa-solid fa-fingerprint text-3xl"></i>
-                </div>
-                <h1 class="text-3xl font-black text-slate-900 tracking-tight">Bon retour !</h1>
-                <p class="text-slate-500 mt-2">Heureux de vous revoir sur SHIPUP</p>
+    <div class="max-w-md w-full bg-white rounded-[2.5rem] shadow-2xl p-10 border border-slate-100">
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 rotate-3 shadow-lg shadow-blue-200">
+                <i data-lucide="truck" class="text-white w-8 h-8 -rotate-3"></i>
             </div>
+            <h1 class="text-3xl font-black text-slate-900 tracking-tighter italic">Lmsakher<span class="text-blue-600">GO</span></h1>
+            <p class="text-slate-400 font-medium mt-2">Votre coursier en un clic.</p>
+        </div>
 
-            <form action="process_login.php" method="POST" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-bold text-slate-700 mb-2">Votre Email</label>
-                    <input type="email" name="email" required placeholder="nom@exemple.com" 
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
-                </div>
+        <form action="loginhh.php" method="POST" class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1">Email</label>
+                <input name="email" type="email" class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 transition outline-none" placeholder="nom@exemple.com">
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1">Mot de passe</label>
+                <input type="password" class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 transition outline-none"
+                name="password" placeholder="••••••••">
+            </div>
+            <button class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-5 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] shadow-xl"
+            name="submit">
+                Se connecter
+            </button>
+        </form>
 
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <label class="text-sm font-bold text-slate-700">Mot de passe</label>
-                        <a href="#" class="text-xs font-bold text-blue-600">Oublié ?</a>
-                    </div>
-                    <input type="password" name="password" required placeholder="••••••••" 
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
-                </div>
-
-                <button type="submit" class="w-full bg-slate-900 hover:bg-black text-white font-black py-4 rounded-xl shadow-lg transition-all hover:-translate-y-1">
-                    SE CONNECTER
-                </button>
-            </form>
-
-            <p class="text-center mt-10 text-slate-500 text-sm">
-                Pas encore de compte ? <a href="register.php" class="text-blue-600 font-bold hover:underline">Inscrivez-vous</a>
-            </p>
+        <div class="mt-8 text-center">
+            <p class="text-sm text-slate-500">Pas encore de compte ? <a href="register.php" class="text-blue-600 font-bold underline decoration-2 underline-offset-4">S'inscrire</a></p>
         </div>
     </div>
 
+    <script>lucide.createIcons();</script>
 </body>
 </html>
