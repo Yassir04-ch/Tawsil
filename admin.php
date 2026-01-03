@@ -50,12 +50,12 @@
 
         <div class="p-6 border-t border-slate-100">
             <div class="bg-slate-900 p-4 rounded-2xl flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold text-white">AD</div>
+                <a href="profil.php"><div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold text-white">AD</div></a>
                 <div class="flex-1 overflow-hidden">
                     <p class="text-xs font-black text-white truncate">Admin Root</p>
                     <p class="text-[10px] text-slate-400 truncate">admin@lmsakher.go</p>
                 </div>
-                <button class="text-slate-500 hover:text-red-400"><i class="fa-solid fa-right-from-bracket"></i></button>
+                <a href="deconexion.php"><button class="text-slate-500 hover:text-red-400"><i class="fa-solid fa-right-from-bracket"></i></button></a>
             </div>
         </div>
     </aside>

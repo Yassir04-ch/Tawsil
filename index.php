@@ -96,9 +96,5 @@
     <footer class="py-10 border-t border-slate-100 text-center">
         <p class="text-slate-400 text-sm">© 2025 SHIPUP Digital Solutions. Tous droits réservés.</p>
     </footer>
-
-    <a href="admin.php">admin</a>
-    <a href="client.php">client</a>
-    <a href="livreur.php">livreur</a>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-abstract class User{
+ abstract class User{
     protected string $firstname;
     protected string $lastname;
     protected string $email;
@@ -19,7 +19,7 @@ abstract class User{
     public function getFirstname(){
      return   $this->firstname;
 }
-     public function setFistame(string $firstname){
+     public function setFirstame(string $firstname){
         $this->firstname = $firstname;
      } 
      public function getLastname(){
@@ -35,9 +35,8 @@ abstract class User{
          $this->email = $email; 
         }
 
-    public function getRole(){ 
-        return $this->role; 
-    }
+     abstract public function getRole();
+
     public function setRole(string $role){ 
         $this->role = $role; 
     }
@@ -51,4 +50,24 @@ abstract class User{
     public function logout(){
     }
 
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 }

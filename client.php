@@ -1,3 +1,6 @@
+
+<?php session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,9 +32,10 @@
                         <i class="fa-solid fa-bell text-xl"></i>
                         <span class="absolute top-1.5 right-1.5 bg-red-500 w-2 h-2 rounded-full border-2 border-white"></span>
                     </button>
-                    <div class="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
+                    <a href="profil.php"><div class="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
                         ME
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -41,7 +45,7 @@
         
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
             <div>
-                <h2 class="text-3xl font-black text-slate-800 tracking-tight">Bonjour, Mehdi 👋</h2>
+                <h2 class="text-3xl font-black text-slate-800 tracking-tight">Bonjour, <?php echo $_SESSION['firstname'] ?> 👋</h2>
                 <p class="text-slate-500 mt-1">Voici l'état actuel de vos livraisons aujourd'hui.</p>
             </div>
             <button id="open-order-modal" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center shadow-xl shadow-blue-200 transition-all hover:-translate-y-1 active:scale-95">
@@ -156,6 +160,28 @@
         <button class="text-slate-500"><i class="fa-solid fa-user-circle text-xl"></i></button>
     </div>
 
-    <script src="client-app.js"></script>
+<script>
+const openModalBtn = document.getElementById('open-order-modal');
+const modalBackdrop = document.getElementById('modal-backdrop');
+const closeModalBtn = document.getElementById('close-modal');
+
+openModalBtn.addEventListener('click', () => {
+    modalBackdrop.classList.remove('hidden');
+    document.body.classList.add('modal-open');  
+});
+
+closeModalBtn.addEventListener('click', () => {
+    modalBackdrop.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+});
+
+modalBackdrop.addEventListener('click', (e) => {
+    if (e.target === modalBackdrop) {
+        modalBackdrop.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+    }
+});
+</script>
+
 </body>
 </html>

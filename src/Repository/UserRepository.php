@@ -1,24 +1,24 @@
 <?php
-class UserRepository {
-    private PDO $conn;
+require_once __DIR__ . '/../config/Database.php';
+class UserRepository  extends Database{
 
-    public function __constract(PDO $pdo){
-        $this->pdo = $conn;
+    public function __construct(){
+         parent::__construct();
     }
 
     public function adduser(User $user){
 
-        $sql = "INSERT INTO users (fisrtname,lastname,email,password,role,active)
+        $sql = "INSERT INTO users (firstname,lastname,email,password,role,active)
          VALUES (?,?,?,?,?,?)";
-         $stmt = $this->pdo->prepare($sql);
-         $stmt->execute($user->firstname,$user->lastname,$user->email,$user->password,$user->role,$user->active);
+         $stmt = $this->conn->prepare($sql);
+         $stmt->execute([$user->getFirstname(),$user->getLastname(),$user->getEmail(),$user->getPassword(),$user->getRole(),$user->getActive()]);
     }
 
     public function finduserbyemail($email){
 
         $sql = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
-        $stmt->binValue(':email',$email);
+        $stmt->bindValue(':email',$email);
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;

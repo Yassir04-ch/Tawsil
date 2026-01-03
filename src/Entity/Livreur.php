@@ -5,8 +5,7 @@ class Livreur extends User{
         parent::__construct($firstname,$lastname, $email, $password,$role,$active );
     }
 
-    public function voirCommendes(){}
-    public function envoiyerOffre(){}
-    public function changerEtatcommande(){}
-    
+   public function getRole(){
+    return 'livreur';
+   }
 }

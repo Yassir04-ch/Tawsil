@@ -6,10 +6,8 @@ class Admin extends User{
         parent::__construct($firstname,$lastname, $email, $password,$role,$active );
     }
 
-    public function listuser(){}
-
-    public function activercompet(){}
-    public function changerole(){}
-    public function voirstatistique(){}
+     public function getRole(){
+    return 'admin';
+   }
     
 }

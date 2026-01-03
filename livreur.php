@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -77,7 +81,7 @@
         <button class="text-blue-600 flex flex-col items-center gap-1"><i class="fa-solid fa-map-location-dot text-xl"></i><span class="text-[9px] font-bold">Missions</span></button>
         <button class="text-slate-300 flex flex-col items-center gap-1 hover:text-blue-400 transition-colors"><i class="fa-solid fa-box text-xl"></i><span class="text-[9px] font-bold">Mes Colis</span></button>
         <button class="text-slate-300 flex flex-col items-center gap-1 hover:text-blue-400 transition-colors"><i class="fa-solid fa-chart-pie text-xl"></i><span class="text-[9px] font-bold">Stats</span></button>
-        <button class="text-slate-300 flex flex-col items-center gap-1 hover:text-blue-400 transition-colors"><i class="fa-solid fa-user-circle text-xl"></i><span class="text-[9px] font-bold">Profil</span></button>
+        <a href="profil.php"><button class="text-slate-300 flex flex-col items-center gap-1 hover:text-blue-400 transition-colors"><i class="fa-solid fa-user-circle text-xl"></i><span class="text-[9px] font-bold">Profil</span></button></a>
     </nav>
 
     <div id="modal-offer" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-6">

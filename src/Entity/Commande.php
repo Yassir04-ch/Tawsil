@@ -1,6 +1,7 @@
 <?php
 
 class Commande {
+    private int $client_id;
     private string $description;
     private string $adresse;
     private $created_at;
@@ -54,4 +55,15 @@ class Commande {
 
     }
 
+    public function getClient_id()
+    {
+        return $this->client_id;
+    }
+
+    public function setClient_id($client_id)
+    {
+        $this->client_id = $client_id;
+
+        return $this;
+    }
 }
