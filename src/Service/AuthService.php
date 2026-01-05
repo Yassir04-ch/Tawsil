@@ -12,21 +12,7 @@ class AuthService{
           return "Email déjà utilisé!";
         }
         $this->userrepo->adduser($user);
-          $_SESSION['firstname'] = $user->getFirstname();
-          $_SESSION['lastname']  = $user->getLastname();
-          $_SESSION['email']     = $user->getEmail();
-          $_SESSION['role']      = $user->getRole();
-
-    if ($user->getRole() === 'client') {
-        header('Location: client.php');
-        exit;
-    } elseif ($user->getRole() === 'livreur') {
-        header('Location: livreur.php');
-        exit;
-    } else {
-        header('Location: admin.php');
-        exit;
-    }
+      header('location:login.php');
     }
 
     public function login($email,$password){
@@ -38,12 +24,12 @@ class AuthService{
         if($password !== $userdata['password']){
             return 'password incorect';
         }
-
+    $_SESSION['id'] = $userdata['id'];
     $_SESSION['firstname'] = $userdata['firstname'];
     $_SESSION['lastname']  = $userdata['lastname'];
     $_SESSION['email']     = $userdata['email'];
     $_SESSION['role']      = $userdata['role'];
-
+ 
     if ($userdata['role']==='client') {
         header('location:client.php');
     }

@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../config/Database.php';
 class CommandeRepository extends Database{
 
     public function __construct(){
@@ -7,27 +7,50 @@ class CommandeRepository extends Database{
     }
 
     public function addCommande(Commande $commande){
-     $sql = "INSERT INTO commande(client_id,description,adresse,is_deleted) VALUES (?,?,?,?)";
+     $sql = "INSERT INTO commandes (client_id,description,adresse,address_delivery,is_deleted) VALUES (?,?,?,?,?)";
      $stmt = $this->conn->prepare($sql);
-     $stmt->execute([$commende->getClient_id(),$commmend->getDescription(),$commande->getAdresse(), $commande->getIsDelete()]);
+     $stmt->execute([$commande->getClient_id(),$commande->getDescription(),$commande->getAdresse(),$commande->getAddress_delivery(), $commande->getIs_delete()]);
     }
     public function affichCommandes(int $clinetid){
-       $sql = "SELECT * FROM commande WHERE client_id = ?";
+       $sql = "SELECT * FROM commandes WHERE client_id = ? AND is_deleted = 0";
        $stmt = $this->conn->prepare($sql);
        $stmt->execute([$clinetid]);
        $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
        return  $commandes;
     }
+    public function getCommande(int $id){
+    $sql = "SELECT * FROM commandes WHERE id = ?";
+       $stmt = $this->conn->prepare($sql);
+       $stmt->execute([$id]);
+       $commandes = $stmt->fetch(PDO::FETCH_ASSOC);
+       return  $commandes;
+    }
 
-    public function modifierCommande(int $comid,string $description,string $adresse){
-        $sql = "UPDATE commande SET description = ? ,adresse = ? , WHERE client_id = ?";
+    public function affichallcommande(){
+        $sql = "SELECT  * FROM commandes WHERE is_deleted = 0  AND status = En attente";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$description,$adresse,$comid]);
+        $stmt->execute();
+        $commandes =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+           return $commandes;
+    }
+     public function commandelivreur(){
+        $sql = "SELECT  * FROM commandes WHERE is_deleted = 0 AND status = 'En attente'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $commandes =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+           return $commandes;   
+     }
+
+    public function modifierCommande(int $comid,string $description,string $adresse,string $address_delivery){
+        $sql = "UPDATE commandes SET description = ? ,adresse = ? ,address_delivery = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$description,$adresse,$address_delivery,$comid]);
     }
 
     public function softDelet(int $comid){
-    $sql = "UPDATE commande SET is_deleted = 1 WHERE client_id = ?";
+    $sql = "UPDATE commandes SET is_deleted = 1 WHERE id = ?";
     $stmt = $this->conn->prepare($sql);
     $stmt->execute([$comid]);
-    }
+    } 
+
 }

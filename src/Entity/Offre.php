@@ -1,11 +1,22 @@
 <?php
 class Offre {
+    private int $commande_id;
+    private int $livreur_id;
     private float $prix;
     private $duree ;
     private string $type_vehicule;
     private string $option;
     private  $created_at;
 
+     public function __construct(int $commande_id, int $livreur_id,float $prix,string $duree,  string $type_vehicule, string $option){
+        $this->commande_id = $commande_id;  
+        $this->livreur_id = $livreur_id;
+        $this->prix = $prix;
+        $this->duree = $duree;
+        $this->type_vehicule = $type_vehicule;
+        $this->option = $option;
+
+     }
     public function getPrix()
     {
         return $this->prix;
@@ -60,15 +71,27 @@ class Offre {
     {
         return $this->created_at;
     }
-
-
-    public function create(){
+    
+    public function setCommande_id($commande_id)
+    {
+        $this->commande_id = $commande_id;
 
     }
-    public function accept(){}
 
-    public function update(){}
+    public function getLivreur_id()
+    {
+        return $this->livreur_id;
+    }
 
     
-    
+    public function setLivreur_id($livreur_id)
+    {
+        $this->livreur_id = $livreur_id;
+
+    }
+ 
+    public function getCommande_id()
+    {
+        return $this->commande_id;
+    }
 }

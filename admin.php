@@ -14,6 +14,7 @@
 </head>
 <body class="bg-slate-50 flex h-screen overflow-hidden font-sans">
 
+    <!-- Sidebar -->
     <aside class="w-72 bg-white border-r border-slate-200 flex flex-col z-50">
         <div class="p-8 border-b border-slate-50">
             <div class="flex items-center gap-3">
@@ -60,6 +61,7 @@
         </div>
     </aside>
 
+    <!-- Main -->
     <main class="flex-1 flex flex-col overflow-y-auto bg-[#F8FAFC]">
         
         <header class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 px-10 flex items-center justify-between sticky top-0 z-40">
@@ -114,6 +116,7 @@
                 </div>
             </div>
 
+            <!-- Tableau & Nouveau Staff -->
             <div class="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl overflow-hidden">
                 <div class="p-8 border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-50/50">
                     <div>
@@ -121,7 +124,8 @@
                         <p class="text-xs text-slate-500 font-medium">Gestion des comptes et des accès système.</p>
                     </div>
                     <div class="flex gap-3">
-                        <button class="bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-blue-600 transition flex items-center gap-2">
+                        <!-- Bouton modifié -->
+                        <button id="open-admin-modal" class="bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-blue-600 transition flex items-center gap-2">
                             <i class="fa-solid fa-user-plus"></i> Nouveau Staff
                         </button>
                     </div>
@@ -139,7 +143,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100" id="users-table">
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
                 
@@ -154,49 +158,87 @@
         </div>
     </main>
 
+    <!-- Modal Nouveau Staff -->
     <div id="admin-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[100] hidden flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-[3rem] p-10 shadow-2xl scale-in">
-            <h2 class="text-2xl font-black italic mb-6">Modifier l'utilisateur</h2>
-            <div id="modal-content-area" class="space-y-6">
+            <h2 class="text-2xl font-black italic mb-6">Ajouter Nouveau Staff</h2>
+            <form id="new-staff-form" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-2">first name</label>
+                    <input type="text" name="firstname" class="w-full border border-slate-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500" placeholder="Ex: Ahmed Ben Ali" required>
                 </div>
-            <div class="flex gap-4 mt-10">
-                <button id="close-admin-modal" class="flex-1 py-4 bg-slate-100 rounded-2xl font-bold text-slate-500 hover:bg-slate-200">Fermer</button>
-                <button class="flex-[2] py-4 bg-blue-600 text-white rounded-2xl font-black shadow-xl">SAUVEGARDER</button>
-            </div>
+                 <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-2">last name</label>
+                    <input type="text" name="lastname" class="w-full border border-slate-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500" placeholder="Ex: Ahmed Ben Ali" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-2">Email</label>
+                    <input type="email" name="email" class="w-full border border-slate-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500" placeholder="Ex: staff@domain.com" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-2">Mot de Passe</label>
+                    <input type="password" name="password" class="w-full border border-slate-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500" placeholder="******" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-2">Rôle / Accès</label>
+                    <select name="role" class="w-full border border-slate-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500" required>
+                        <option value="">-- Sélectionner un rôle --</option>
+                        <option value="admin">livreur</option>
+                        <option value="moderator">client</option>
+                        <option value="viewer">admin</option>
+                    </select>
+                </div>
+                <div class="flex gap-4 mt-6">
+                    <button type="button" id="close-admin-modal" class="flex-1 py-3 bg-slate-100 rounded-2xl font-bold text-slate-500 hover:bg-slate-200">Annuler</button>
+                    <button type="submit" class="flex-[2] py-3 bg-blue-600 text-white rounded-2xl font-black shadow-xl">Ajouter</button>
+                </div>
+            </form>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    // Actions de modération
-    document.addEventListener('click', async (e) => {
-        
-        // Bouton Bannir
-        if (e.target.closest('.btn-ban')) {
-            const userId = e.target.closest('.btn-ban').dataset.userId;
-            if (confirm("Voulez-vous vraiment bannir cet utilisateur ?")) {
-                // --- BLASA DYAL PHP ---
-                // await fetch(`api/admin_action.php?action=ban&id=${userId}`);
-                console.log("Utilisateur banni:", userId);
-            }
-        }
+            const openModalBtn = document.getElementById('open-admin-modal');
+            const adminModal = document.getElementById('admin-modal');
+            const closeModalBtns = document.querySelectorAll('#close-admin-modal');
+            const newStaffForm = document.getElementById('new-staff-form');
 
-        // Bouton Modifier (Ouvrir Modal)
-        if (e.target.closest('.btn-edit')) {
-            const userId = e.target.closest('.btn-edit').dataset.userId;
-            // Fetch user info from PHP then open modal
-            console.log("Chargement info utilisateur:", userId);
-        }
-    });
+            // Ouvrir modal
+            openModalBtn.addEventListener('click', () => {
+                adminModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
 
-    // Filtres de recherche
-    const searchInput = document.getElementById('admin-search');
-    searchInput?.addEventListener('input', (e) => {
-        const query = e.target.value;
-        console.log("Recherche en cours pour:", query);
-        // Hna tqder t-dir Live Search m3a PHP
-    });
- });
+            // Fermer modal
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    adminModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+
+            // Fermer en cliquant en dehors
+            adminModal.addEventListener('click', (e) => {
+                if (e.target === adminModal) {
+                    adminModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            // Soumission du formulaire (exemple console.log)
+            newStaffForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(newStaffForm);
+                const data = Object.fromEntries(formData.entries());
+                console.log("Nouveau staff :", data);
+                // Ici tu peux envoyer les données à PHP via fetch
+                adminModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+                newStaffForm.reset();
+            });
+        });
     </script>
+
 </body>
 </html>
