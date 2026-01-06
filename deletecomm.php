@@ -3,12 +3,8 @@
 require_once 'src/Entity/Commande.php';
 require_once 'src/Repository/CommandeRepository.php';
 require_once 'src/Repository/OffreRepository.php';
+require_once 'src/Service/CommandeService.php';
 session_start();
 $id = $_GET['id'];
-$commandeRepo = new CommandeRepository();
-$commandeRepo->softDelet($id);
-$offreRepo = new OffreRepository();
-$status = "Annulée";
-$offreRepo->updatstatut($id,$status);
-
-header('location:client.php');
+$commandeser = new CommandeService();
+$commandeser->deletcom($id);

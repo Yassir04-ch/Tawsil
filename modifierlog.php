@@ -11,7 +11,5 @@ $description = $_POST['description'];
 $adresse = $_POST['adresse'];
 $adresse_livraison = $_POST['adresse_livraison'];
 
-$commandeRepo = new CommandeRepository();
-$commandeRepo->modifierCommande($commande_id, $description, $adresse, $adresse_livraison);
-header('location:client.php');
-
+$commandeser = new CommandeService();
+$commandeser->modifiercom($commande_id, $description, $adresse, $adresse_livraison);

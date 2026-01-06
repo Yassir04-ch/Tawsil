@@ -1,21 +1,23 @@
 <?php
 session_start();
-require_once 'src/Repository/OffreRepository.php';
 require_once 'src/Entity/Offre.php';
+require_once 'src/Service/OffreService.php';
+
 
 $commande_id = $_GET['id'];
 
 if (isset($_POST['submit'])) {
-$livreur_id  = $_SESSION['id'];
-$prix = $_POST['prix'];
-$duree = $_POST['duree'];
-$type_vehicule = $_POST['type_vehicule'];
-$option = $_POST['option'];
-$status_offre = "En Attente";
-$offre =  new Offre($commande_id, $livreur_id, $prix, $duree, $type_vehicule, $option, $status_offre);
-$offreRepo = new OffreRepository();
-$offreRepo->addoffre($offre);
-$message = '';
+    $data = [
+        'commande_id'   => $commande_id,
+        'livreur_id'    => $_SESSION['id'],
+        'prix'          => $_POST['prix'],
+        'duree'         => $_POST['duree'],
+        'type_vehicule' => $_POST['type_vehicule'],
+        'option'        => $_POST['option']
+    ];
+    $offreser = new OffreService();
+    $offreser->creatoffre($data);
+ 
 }
 
 
