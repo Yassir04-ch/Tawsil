@@ -34,12 +34,14 @@ class CommandeRepository extends Database{
            return $commandes;
     }
      public function commandelivreur(){
-        $sql = "SELECT  * FROM commandes WHERE is_deleted = 0 AND status = 'En attente'";
+        $sql = "SELECT  * FROM commandes  WHERE is_deleted = 0 AND status != 'Commande livrée'  AND status != 'Annulée'
+        ORDER BY status ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $commandes =  $stmt->fetchAll(PDO::FETCH_ASSOC);
            return $commandes;   
      }
+
 
     public function modifierCommande(int $comid,string $description,string $adresse,string $address_delivery){
         $sql = "UPDATE commandes SET description = ? ,adresse = ? ,address_delivery = ? WHERE id = ?";

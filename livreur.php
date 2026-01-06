@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once 'src/Repository/CommandeRepository.php';
-
-
 $commandeRepo = new CommandeRepository();
 $commandes = $commandeRepo->commandelivreur();
 ?>
@@ -46,6 +44,8 @@ $commandes = $commandeRepo->commandelivreur();
                     <div class="space-y-1">
                         <span class="bg-blue-50 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full border border-blue-100">NOUVEAU</span>
                         <h4 class="text-xl font-bold pt-2 text-slate-800"><?= $commande['description']?></h4>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full border border-blue-100">status command</span>
+                        <h5 class="text-xl font-bold pt-2 text-slate-800"><?= $commande['status']?></h5>
                     </div>
                     <div class="text-right">
                         <p class="text-xs text-slate-400">date creat</p>
@@ -64,12 +64,13 @@ $commandes = $commandeRepo->commandelivreur();
                         <p class="text-sm font-semibold text-slate-700">Arrivée: <span class="text-slate-400 ml-2 font-medium italic text-xs"><?= $commande['address_delivery'] ?></span></p>
                     </div>  
                 </div>
-
+          <?php if($commande['status'] == 'En attente'): ?>
                 <a href="proposerOffre.php?id=<?= $commande['id'] ?>">
                     <button class="btn-propose w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-sm hover:bg-blue-600 transition-all active:scale-95 shadow-xl shadow-slate-200">
                         PROPOSER UN PRIX
                     </button>
                 </a>
+         <?php endif; ?>
             </div>
             <?php endforeach; ?>
         <?php else: ?>

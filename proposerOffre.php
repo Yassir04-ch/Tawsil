@@ -8,10 +8,11 @@ $commande_id = $_GET['id'];
 if (isset($_POST['submit'])) {
 $livreur_id  = $_SESSION['id'];
 $prix = $_POST['prix'];
- $duree = $_POST['duree'];
- $type_vehicule = $_POST['type_vehicule'];
- $option = $_POST['option'];
-$offre =  new Offre($commande_id, $livreur_id, $prix, $duree, $type_vehicule, $option);
+$duree = $_POST['duree'];
+$type_vehicule = $_POST['type_vehicule'];
+$option = $_POST['option'];
+$status_offre = "En Attente";
+$offre =  new Offre($commande_id, $livreur_id, $prix, $duree, $type_vehicule, $option, $status_offre);
 $offreRepo = new OffreRepository();
 $offreRepo->addoffre($offre);
 $message = '';
@@ -74,10 +75,10 @@ $message = '';
             </select>
         </div>
 
-        <button type="submit" name="submit"
+        <a href="ofrecommand.php"><button type="submit" name="submit"
             class="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-2xl font-black shadow-lg">
             ENVOYER L'OFFRE
-        </button>
+        </button></a>
     </form>
 
     <a href="livreur.php" class="block text-center mt-6 text-sm text-slate-400 hover:text-blue-600">

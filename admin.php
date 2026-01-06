@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,13 +35,13 @@
             <a href="#" class="sidebar-item-active flex items-center gap-4 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-chart-pie w-5"></i> Vue d'ensemble
             </a>
-            <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
+            <a href="utilisateurs.php" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-users w-5"></i> Utilisateurs
             </a>
             <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-truck-fast w-5"></i> Livreurs
             </a>
-            <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
+            <a href="commandes.php" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-box w-5"></i> Commandes
             </a>
 
@@ -53,7 +57,7 @@
             <div class="bg-slate-900 p-4 rounded-2xl flex items-center gap-3">
                 <a href="profil.php"><div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold text-white">AD</div></a>
                 <div class="flex-1 overflow-hidden">
-                    <p class="text-xs font-black text-white truncate">Admin Root</p>
+                    <p class="text-xs font-black text-white truncate"></p>
                     <p class="text-[10px] text-slate-400 truncate">admin@lmsakher.go</p>
                 </div>
                 <a href="deconexion.php"><button class="text-slate-500 hover:text-red-400"><i class="fa-solid fa-right-from-bracket"></i></button></a>
@@ -65,7 +69,7 @@
     <main class="flex-1 flex flex-col overflow-y-auto bg-[#F8FAFC]">
         
         <header class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 px-10 flex items-center justify-between sticky top-0 z-40">
-            <h2 class="text-xl font-black text-slate-800">Dashboard <span class="text-slate-400 font-medium">/ Statistiques</span></h2>
+            <h2 class="text-xl font-black text-slate-800">Statistiques</h2>
             
             <div class="flex items-center gap-6">
                 <div class="relative group hidden md:block">

@@ -12,18 +12,24 @@ class OffreRepository extends Database{
      $stmt->execute([$offre->getCommande_id(),$offre->getLivreur_id(),$offre->getPrix(),$offre->getDuree(), $offre->getType_vehicule(),$offre->getOption()]);
     }
     public function affichoffres(int $commandeid){
-       $sql = "SELECT * FROM offres WHERE commande_id = ?";
+       $sql = "SELECT offres.id,users.firstname,users.lastname,prix,duree,type_vehicule,`options`,offres.created_at,status_offre FROM offres  JOIN users ON offres.livreur_id = users.id WHERE commande_id = ?";
        $stmt = $this->conn->prepare($sql);
        $stmt->execute([$commandeid]);
        $offres = $stmt->fetchAll(PDO::FETCH_ASSOC);
        return  $offres;
     }
 
-    public function updatstatut($comid,$status){
+    public function updatstatutcom($comid,$status){
         $sql = "UPDATE commandes SET status = :status WHERE id = :comid";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['status'=>$status,'comid'=>$comid]);
     }
+      public function updatstatutoffre($offrid,$status){
+        $sql = "UPDATE offres SET status_offre = :status WHERE id = :offrid";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['status'=>$status,'offrid'=>$offrid]);
+    }
+
 
     public function modifieroffre( $ofid, $description, $adresse, $address_delivery){
         $sql = "UPDATE commandes SET description = ? ,adresse = ? ,address_delivery = ?, WHERE client_id = ?";
