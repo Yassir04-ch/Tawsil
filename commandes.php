@@ -1,3 +1,13 @@
+<?php 
+require_once 'src/Entity/Commande.php';
+require_once 'src/Repository/AdminRepository.php';
+require_once 'src/Service/AdmineService.php';
+session_start();
+$admineser = new AdmineService() ;
+$commandes = $admineser->affichallcommandes();
+ 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -64,110 +74,50 @@
                                 <th class="px-8 py-5">Référence</th>
                                 <th class="px-8 py-5">Client</th>
                                 <th class="px-8 py-5">Destination</th>
-                                <th class="px-8 py-5">Livreur</th>
+                                <th class="px-8 py-5">date create</th>
                                 <th class="px-8 py-5">Statut</th>
-                                <th class="px-8 py-5">Total</th>
+                                <th class="px-8 py-5">description</th>
                             </tr>
                         </thead>
+                        <?php foreach($commandes as $command): ?>
                         <tbody class="divide-y divide-slate-100">
                             <tr class="hover:bg-slate-50/50 transition italic">
                                 <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-blue-600 uppercase">#ORD-9921</span>
-                                    <span class="block text-[10px] text-slate-400 font-bold">Il y a 10 min</span>
+                                    <span class="text-sm font-black text-blue-600 uppercase"><?= $command['id'] ?></span>
+                                    <span class="block text-[10px] text-slate-400 font-bold">created : <?php $command['created_at'] ?></span>
                                 </td>
                                 <td class="px-8 py-5">
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-black text-slate-800">Karim Alami</span>
-                                        <span class="text-[10px] text-slate-500">+212 655-xx-xx</span>
+                                        <span class="text-sm font-black text-slate-800"><?= $command['firstname'] . $command['lastname'] ?></span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-5">
                                     <div class="flex items-center gap-2 text-slate-600">
                                         <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
-                                        <span class="text-xs font-bold">Gauthier, Casablanca</span>
+                                        <span class="text-xs font-bold"><?=$command['adresse'] . " " . $command['address_delivery'] ?></span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-5">
                                     <div class="flex items-center gap-2">
-                                        <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[8px] font-black">AM</div>
-                                        <span class="text-xs font-bold text-slate-700">Ahmed M.</span>
+                                        <span class="text-xs font-bold text-slate-700"><?= $command['created_at'] ?>PM</span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-5">
                                     <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-wider">
-                                        En livraison
+                                        <?= $command['status'] ?>
                                     </span>
                                 </td>
                                 <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-slate-900">180.00 DH</span>
+                                    <span class="text-sm font-black text-slate-900"><?= $command['description'] ?></span>
                                 </td>
                                 <td class="px-8 py-5 text-right">
                                     <button class="p-2 text-slate-400 hover:text-blue-600 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                 </td>
                             </tr>
 
-                            <tr class="hover:bg-slate-50/50 transition italic bg-orange-50/20">
-                                <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-blue-600 uppercase">#ORD-9922</span>
-                                    <span class="block text-[10px] text-slate-400 font-bold">Il y a 2 min</span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-black text-slate-800">Sara Fahmi</span>
-                                        <span class="text-[10px] text-slate-500">+212 611-xx-xx</span>
-                                    </div>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <div class="flex items-center gap-2 text-slate-600">
-                                        <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
-                                        <span class="text-xs font-bold">Hay Hassani</span>
-                                    </div>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <button class="text-[10px] font-black text-orange-600 bg-orange-100 px-3 py-1 rounded-lg hover:bg-orange-200 transition">
-                                        <i class="fa-solid fa-user-plus mr-1"></i> Assigné Livreur
-                                    </button>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-lg text-[10px] font-black uppercase tracking-wider animate-pulse">
-                                        En attente
-                                    </span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-slate-900">45.00 DH</span>
-                                </td>
-                                <td class="px-8 py-5 text-right">
-                                    <button class="p-2 text-slate-400 hover:text-blue-600 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-slate-50/50 transition italic opacity-70">
-                                <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-slate-400 uppercase">#ORD-9915</span>
-                                    <span class="block text-[10px] text-slate-400 font-bold">14:20</span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-slate-800">Omar Tazi</span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="text-xs font-bold text-slate-500">Ain Sebaa</span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="text-xs font-bold text-slate-700">Yassine B.</span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="px-3 py-1 bg-green-50 text-green-600 rounded-lg text-[10px] font-black uppercase tracking-wider">
-                                        Livrée
-                                    </span>
-                                </td>
-                                <td class="px-8 py-5">
-                                    <span class="text-sm font-black text-slate-900">320.00 DH</span>
-                                </td>
-                                <td class="px-8 py-5 text-right">
-                                    <i class="fa-solid fa-check-double text-green-500"></i>
-                                </td>
-                            </tr>
+                            
                         </tbody>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>

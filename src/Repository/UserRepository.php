@@ -36,4 +36,9 @@ class UserRepository  extends Database{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function updatactive($id,$act){
+        $sql = 'UPDATE users SET active = ? WHERE id = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$act,$id]);
+    }
 }

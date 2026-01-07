@@ -17,26 +17,9 @@ $lname = $_POST['lastname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $role = $_POST['role'];
-
-switch ($role) {
-    case 'client':
-        $user = new Client($fname, $lname, $email, $password,$role,1);
-        break;
-    case 'livreur':
-        $user = new Livreur($fname, $lname, $email, $password,$role,1);
-        break;
-    case 'admin':
-        $user = new Admin($fname, $lname, $email, $password,$role,1);
-        break;
-    default:
-        die('Role invalide');
-}
-
 $userepo = new UserRepository();
 $authser = new AuthService($userepo);
 
-$succuc = $authser->register($user);
-
-var_dump($succuc);
+$msg = $authser->register($fname,$lname,$email,$password,$role);
 
 ?>

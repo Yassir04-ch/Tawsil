@@ -26,6 +26,12 @@ $commandes = $commandeRepo->commandelivreur();
                 <p class="text-[10px] text-green-500 font-bold uppercase"><i class="fa-solid fa-circle text-[8px] mr-1"></i> En ligne</p>
             </div>
         </div>
+
+               <a href="profil.php">
+                    <div class="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md uppercase">
+                        <?= substr($_SESSION['firstname'], 0, 2) ?>
+                    </div>
+                </a>
     </div>
 </header>
 
@@ -38,9 +44,11 @@ $commandes = $commandeRepo->commandelivreur();
             <?php foreach($commandes as $commande): ?>
             <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-6 hover:border-blue-500/50 transition-all group">
                 <div class="flex justify-between items-start">
-                    <a href="ofrecommand.php?id=<?= $commande['id']?>"><button class="view-offers-btn flex-1 lg:flex-none bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-blue-100 hover:bg-slate-900 transition flex items-center justify-center">
-                                <i class="fa-solid fa-tags mr-2"></i> Voir les offres
-                            </button></a>
+                    <a href="ofrecommand.php?id=<?= $commande['id']?>">
+                        <button class="view-offers-btn flex-1 lg:flex-none bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-blue-100 hover:bg-slate-900 transition flex items-center justify-center">
+                            <i class="fa-solid fa-tags mr-2"></i> Voir les offres
+                        </button>
+                    </a>
                     <div class="space-y-1">
                         <span class="bg-blue-50 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full border border-blue-100">NOUVEAU</span>
                         <h4 class="text-xl font-bold pt-2 text-slate-800"><?= $commande['description']?></h4>

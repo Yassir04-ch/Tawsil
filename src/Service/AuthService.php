@@ -7,7 +7,20 @@ class AuthService{
     public function __construct( $userrepo) {
         $this->userrepo = $userrepo;
     }
-    public function register(User $user){
+    public function register($fname,$lname,$email,$password,$role) {
+            switch ($role) {
+        case 'client':
+            $user = new Client($fname, $lname, $email, $password,$role,1);
+            break;
+        case 'livreur':
+            $user = new Livreur($fname, $lname, $email, $password,$role,1);
+            break;
+        case 'admin':
+            $user = new Admin($fname, $lname, $email, $password,$role,1);
+            break;
+        default:
+            die('Role invalide');
+    }
         if ($this->userrepo->finduserbyemail($user->getEmail())) {
           return "Email déjà utilisé!";
         }
@@ -29,7 +42,9 @@ class AuthService{
     $_SESSION['lastname']  = $userdata['lastname'];
     $_SESSION['email']     = $userdata['email'];
     $_SESSION['role']      = $userdata['role'];
- 
+    
+    $this->userrepo->updatactive($_SESSION['id'],1);
+  
     if ($userdata['role']==='client') {
         header('location:client.php');
     }
@@ -40,9 +55,10 @@ class AuthService{
         header('location:admin.php');
     }
 }
-public function logout(){
-    session_destroy();
+public function logout($id,$act){
+    $this->userrepo->updatactive($id,$act);
     header('location:index.php');
+    session_destroy();
 }
 
 }

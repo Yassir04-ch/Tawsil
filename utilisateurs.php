@@ -1,16 +1,16 @@
 <?php
 require_once 'src/Entity/user.php';
 require_once 'src/Repository/userRepository.php';
-require_once 'src/Service/AuthService.php';
+require_once 'src/Service/AdmineService.php';
 session_start();
-$userepo = new UserRepository(); 
-if (!isset($_SESSION['id']) && $_SESSION['role'] != 'admin'){
+ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin'){
 header('location:index.php');
-exit;
+exit();
 }
+$adminser = new AdmineService();
 $id = $_SESSION['id'];
-$userepo = new UserRepository(); 
-$users = $userepo->affichusers($id);
+$users = $adminser->affichusers($id);
+
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +86,7 @@ $users = $userepo->affichusers($id);
                                 <th class="px-8 py-5">Utilisateur</th>
                                 <th class="px-8 py-5">Email</th>
                                 <th class="px-8 py-5">Rôle</th>
+                                <th class="px-8 py-5">situation</th>
                                 <th class="px-8 py-5 text-right">Actions</th>
                             </tr>
                         </thead>
@@ -102,6 +103,16 @@ $users = $userepo->affichusers($id);
                                 <td class="px-8 py-5 text-sm">
                                     <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-wider"><?=$user['role'] ?></span>
                                 </td>
+                                <?php if($user['active'] == 1) :?>
+                                 <td class="px-8 py-5 text-sm">
+                                    <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-wider">En ligne</span>
+                                </td>
+                                <?php else :?>
+                                 <td class="px-8 py-5 text-sm">
+                                    <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-wider">Offline</span>
+                                </td>
+                                <?php endif ;?>
+
                                 <td class="px-8 py-5 text-right">
                                     <button class="p-2 text-slate-400 hover:text-blue-600 transition"><i class="fa-solid fa-user-pen"></i></button>
                                     <button class="p-2 text-slate-400 hover:text-red-500 transition"><i class="fa-solid fa-trash"></i></button>

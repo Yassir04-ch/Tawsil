@@ -29,8 +29,11 @@ require_once __DIR__ . '/../Repository/OffreRepository.php';
     header('location:client.php') ;
 
    }
-   public function updatstatuscom($id,$status){
-    
+   public function updatstatuscomm($id,$status){
+      $offreRepo = new OffreRepository() ;
+      $offreRepo->updatstatutcom($id,$status) ;
+      header('location:client.php');
+
    }
 
 }
