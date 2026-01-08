@@ -1,7 +1,9 @@
 <?php
-require_once '../Entity/Commande.php';
-require_once '../Repository/CommandeRepository.php';
-require_once '../Service/CommandeService.php';
+namespace Src\Controller;
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Entity\Commande;
+use Src\Service\CommandeService;
+
 session_start();
 if (!isset($_POST['submit'])) {
     header('location:../views/client.php');
@@ -11,12 +13,7 @@ $description = $_POST['description'];
 $address_delivery = $_POST['address_delivery'];
 $adresse = $_POST['adresse'];
 $client_id = $_SESSION['id'];
-$data = [
-      'client_id'=>$client_id,
-    'description'=> $description,
-    'address_delivery'=> $address_delivery,
-    'adresse'=> $adresse,
-    'is_delete'=> 0
-];
+$commande = new Commande($client_id, $description,  $address_delivery, $adresse , 0);
 $commandeser = new CommandeService();
-$commandeser->addcommande($data);
+$commandeser->addcommande($commande);
+header('location:../views/client.php');

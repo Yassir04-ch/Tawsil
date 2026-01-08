@@ -1,6 +1,6 @@
 <?php
-require_once '../Entity/Offre.php';
-require_once '../Service/OffreService.php';
+namespace Controller;
+use Src\Service\OffreService;
 session_start();
 $commande_id = $_POST['commande_id'];
 $offre_id = $_POST['offre_id'];

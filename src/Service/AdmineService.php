@@ -1,4 +1,9 @@
 <?php
+
+namespace Src\Service;
+use Src\Repository\UserRepository;
+use Src\Repository\AdminRepository;
+
 class AdmineService{
     public function affichusers($id){
      $userepo = new UserRepository(); 
@@ -12,11 +17,9 @@ class AdmineService{
     public function desactiverconte($id){
         $admindrep = new AdminRepository();
        $admindrep->desactivertactive($id);
-       header("location:../views/utilisateurs.php");
     }
     public function updateroleuser($id,$role){
         $admindrep = new AdminRepository();
         $admindrep->updaterole($id,$role);
-
     }
 }

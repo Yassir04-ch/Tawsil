@@ -1,5 +1,6 @@
 <?php
 
+namespace Src\Entity;
 
  abstract class User{
     protected string $firstname;

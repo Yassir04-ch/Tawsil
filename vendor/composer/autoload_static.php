@@ -11,20 +11,12 @@ class ComposerStaticInit5c5a2397ff97db19a931cdf109b49ec9
         array (
             'Src\\' => 4,
         ),
-        'P' =>
-        array (
-            'Public\\' => 7,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Src\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
-        ),
-        'Public\\' =>
-        array (
-            0 => __DIR__ . '/../..' . '/public',
         ),
     );
 

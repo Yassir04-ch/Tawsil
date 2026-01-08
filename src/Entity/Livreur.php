@@ -1,4 +1,5 @@
 <?php   
+namespace Src\Entity;
 
 class Livreur extends User{
      public function __construct(string $firstname,string $lastname,string $email, $password, $role = "client",$active){

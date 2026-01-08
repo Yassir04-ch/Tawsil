@@ -1,24 +1,13 @@
 <?php
-require_once __DIR__ .'/../Entity/Offre.php';
-require_once __DIR__ . '/../Repository/OffreRepository.php';
+namespace Src\Service;
+use Src\Entity\Offre;
+use Src\Repository\OffreRepository;
 
   class OffreService{
 
-    public function creatoffre($data){
-     $offre = new Offre(
-        $data['commande_id'],
-        $data['livreur_id'],
-        $data['prix'],
-        $data['duree'],
-        $data['type_vehicule'],
-        $data['option'],
-        "En Attente" 
-    );
-
-   
+    public function creatoffre($offre){
      $offreRepo = new OffreRepository();
      $offreRepo->addoffre($offre);
-     header("location:../views/livreur.php");
 
    }
    public function accepteoffre($commande_id,$statuscom,$offre_id,$statusoff){
@@ -26,7 +15,6 @@ require_once __DIR__ . '/../Repository/OffreRepository.php';
     $offreRepo = new OffreRepository() ;
     $offreRepo->updatstatutcom($commande_id,$statuscom) ;
     $offreRepo->updatstatutoffre($offre_id, $statusoff) ;
-    header('location:../views/client.php') ;
 
    }
    public function updatstatuscomm($id,$status){

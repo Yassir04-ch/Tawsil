@@ -1,5 +1,11 @@
 <?php
-require_once __DIR__ . '/../config/Database.php';
+
+namespace Src\Repository;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Src\Config\Database;
+use PDO;
+
  class AdminRepository extends Database {
  public function totalrevenu(){
     $sql = 'SELECT SUM()';

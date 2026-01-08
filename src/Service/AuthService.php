@@ -1,4 +1,10 @@
 <?php
+namespace Src\Service;
+use Src\Entity\Admin;
+use Src\Entity\Livreur ;
+use Src\Entity\Client;
+use Src\Repository\UserRepository;
+
 class AuthService{
 
     private $userrepo;
@@ -18,13 +24,12 @@ class AuthService{
             $user = new Admin($fname, $lname, $email, $password,$role,1);
             break;
         default:
-            die('Role invalide');
+            echo'Role invalide';
     }
         if ($this->userrepo->finduserbyemail($user->getEmail())) {
           return "Email déjà utilisé!";
         }
         $this->userrepo->adduser($user);
-      header('location:../views/login.php');
     }
 
     public function login($email,$password){
@@ -35,7 +40,7 @@ class AuthService{
         if($password !== $userdata['password']){
             return 'password incorect';
         }
-        if ( $userdata['active'] = 3 ) {
+        if ( $userdata['active'] == 3 ) {
             header('location:../views/login.php');
             exit;
         }
@@ -46,7 +51,6 @@ class AuthService{
     $_SESSION['role']      = $userdata['role'];
     
     $this->userrepo->updatactive($_SESSION['id'],1);
-    echo'bbb';
   
     if ($userdata['role']==='client') {
         header('location:../views/client.php');

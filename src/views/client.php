@@ -1,21 +1,10 @@
 <?php
-require_once '../Entity/Commande.php';
-require_once '../Repository/CommandeRepository.php';
-require_once '../Service/CommandeService.php';
-session_start();
-
-if (!isset($_SESSION['id'])) {
-    header('location:../../index.php');
-    exit;
-}
-
-$commanderep = new CommandeRepository();
-$commandes = $commanderep->affichCommandes($_SESSION['id']);
+require_once '../Controller/affichcommclient.php'; 
 
 $statusSettings = [
     'En attente' => ['class' => 'bg-amber-100 text-amber-700 border-amber-200', 'label' => 'En attente'],
-    'EN_cours'   => ['class' => 'bg-blue-100 text-blue-700 border-blue-200',   'label' => 'En cours'],
-    'Commande livrée'  => ['class' => 'bg-emerald-100 text-emerald-700 border-emerald-200', 'label' => 'Livrée'],
+    'EN_cours'   => ['class' => 'bg-blue-100 text-blue-700 border-amber-200', 'label' => 'En cours'],
+    'Commande livrée' => ['class' => 'bg-emerald-100 text-emerald-700 border-emerald-200', 'label' => 'Livrée'],
 ];
 ?>
 <!DOCTYPE html>
@@ -138,7 +127,7 @@ $statusSettings = [
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </a>
-                                        <a href="deletecomm.php?id=<?=$commande['id']?>" class="flex-1">
+                                        <a href="../Controller/deletecomm.php?id=<?=$commande['id']?>" class="flex-1">
                                             <button title="Annuler" class="w-full p-4 text-slate-400 hover:text-red-500 bg-slate-50 border border-slate-200 rounded-2xl transition hover:bg-white hover:shadow-md">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </button>
@@ -150,7 +139,7 @@ $statusSettings = [
                                     <div class="lg:w-48 text-center p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
                                         <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Livraison en cours</p>
                                     </div>
-                                    <a href="validercommande.php?id=<?= $commande['id'] ?>" class="flex-1 lg:w-48">
+                                    <a href="../Controler/validercommande.php?id=<?= $commande['id'] ?>" class="flex-1 lg:w-48">
                                         <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 rounded-2xl font-black text-xs shadow-xl shadow-emerald-100 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-tighter">
                                             <i class="fa-solid fa-check-circle text-lg"></i>
                                             Valider la réception
@@ -185,7 +174,7 @@ $statusSettings = [
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <form method="POST" action="addcommande.php" class="p-8 space-y-6">
+        <form method="POST" action="../Controller/addcommande.php" class="p-8 space-y-6">
             <div class="space-y-5">
                 <div>
                     <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Quoi expédier ?</label>

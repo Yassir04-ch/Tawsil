@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Src\\' => array($baseDir . '/src'),
-    'Public\\' => array($baseDir . '/public'),
 );

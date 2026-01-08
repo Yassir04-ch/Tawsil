@@ -1,7 +1,9 @@
 <?php 
-require_once '../Entity/Commande.php';
-require_once '../Repository/AdminRepository.php';
-require_once '../Service/AdmineService.php';
+
+namespace Src\View;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Service\AdmineService;
 session_start();
 $admineser = new AdmineService() ;
 $commandes = $admineser->affichallcommandes();

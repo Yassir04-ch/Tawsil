@@ -1,7 +1,8 @@
 <?php
-require_once '../Entity/user.php';
-require_once '../Repository/userRepository.php';
-require_once '../Service/AdmineService.php';
+
+namespace Src\View;
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Service\AdmineService;
 session_start();
 if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
     header('location:index.php');
@@ -121,7 +122,7 @@ $users = $adminser->affichusers($id);
                                         <div class="flex items-center gap-3">
                                             <div
                                                 class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-black text-xs">
-                                                YA</div>
+                                                </div>
                                             <span
                                                 class="text-sm font-black text-slate-800"><?= $user['firstname'] . $user['lastname'] ?></span>
                                         </div>
@@ -167,7 +168,7 @@ $users = $adminser->affichusers($id);
     <div class="bg-white rounded-[2rem] p-8 w-full max-w-md shadow-2xl border border-slate-100">
         <h3 class="text-xl font-black text-slate-800 italic uppercase mb-6">Modifier le Rôle</h3>
         
-        <form action="updaterole.php" method="POST" class="space-y-4">
+        <form action="../Controller/updaterole.php" method="POST" class="space-y-4">
             <input type="hidden" name="id" id="modalUserId" value="<?= $user['id'] ?>">
             
             <div class="grid gap-3">

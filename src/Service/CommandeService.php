@@ -1,16 +1,12 @@
 <?php
+namespace Src\Service;
+use Src\Entity\Commande;
+use Src\Repository\CommandeRepository;
+use Src\Repository\OffreRepository;
 class CommandeService{
-    public function addcommande($data){
-       $command = new Commande(
-        $data["client_id"],
-        $data["description"],
-        $data["address_delivery"],
-        $data["adresse"],
-        $data["is_delete"],
-       );
+    public function addcommande($commande){
     $commanderep = new CommandeRepository();
-    $commanderep->addCommande($command);
-    header("location:../views/client.php");
+    $commanderep->addCommande($commande);
     }
     public function deletcom($id){
        $commandeRepo = new CommandeRepository();
@@ -18,11 +14,14 @@ class CommandeService{
        $offreRepo = new OffreRepository();
       $status = "Annulée";
       $offreRepo->updatstatutcom($id, $status);
-      header('location:../views/client.php');
     }
-public function modifiercom($commande_id, $description, $adresse, $adresse_livraison){
+  public function modifiercom($commande_id, $description, $adresse, $adresse_livraison){
   $commandeRepo = new CommandeRepository();
   $commandeRepo->modifierCommande($commande_id, $description, $adresse, $adresse_livraison);
-  header('location:../views/client.php');
     }
+    public function getcommmande($id){
+   $commandeRepo = new CommandeRepository();
+       $commnd = $commandeRepo->getCommande( $id);
+         return $commnd;
+      }
 }

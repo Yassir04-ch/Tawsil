@@ -1,6 +1,7 @@
 <?php
-require_once '../Repository/OffreRepository.php';
-require_once '../Service/OffreService.php';
+namespace Src\Controller;
+use Src\Service\OffreService;
+
 session_start();
 $commande_id = $_GET['id'];
 $status = 'Commande livrée';

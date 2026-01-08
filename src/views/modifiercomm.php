@@ -1,12 +1,14 @@
 <?php
-require_once 'src/Entity/Commande.php';
-require_once 'src/Repository/CommandeRepository.php';
-require_once 'src/Service/CommandeService.php';
+namespace Src\View;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Src\Service\CommandeService;
 session_start();
 
 $id = $_GET['id'];
-$commanderep = new CommandeRepository();
-$commande = $commanderep->getCommande( $id);
+$commandeser = new CommandeService();
+$commande = $commandeser->getcommmande( $id);
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +49,7 @@ $commande = $commanderep->getCommande( $id);
                 <p class="text-slate-500 mt-1">Mettez à jour les informations de votre colis avant qu'il ne soit pris en charge.</p>
             </div>
 
-            <form action="../Controler/modifierlog.php" method="POST" class="p-8 space-y-8">
+            <form action="../Controller/modifierlog.php" method="POST" class="p-8 space-y-8">
                 
                 <input type="hidden" name="commande_id" value=<?=$commande['id']?>>
 

@@ -2,24 +2,7 @@
 session_start();
 require_once '../Entity/Offre.php';
 require_once '../Service/OffreService.php';
-
-
 $commande_id = $_GET['id'];
-
-if (isset($_POST['submit'])) {
-    $data = [
-        'commande_id'   => $commande_id,
-        'livreur_id'    => $_SESSION['id'],
-        'prix'          => $_POST['prix'],
-        'duree'         => $_POST['duree'],
-        'type_vehicule' => $_POST['type_vehicule'],
-        'option'        => $_POST['option']
-    ];
-    $offreser = new OffreService();
-    $offreser->creatoffre($data);
- 
-}
-
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +21,7 @@ if (isset($_POST['submit'])) {
         Proposer votre offre
     </h2>
 
-    <form method="POST" class="space-y-5" action="proposerOffre.php?id=<?= $commande_id ?>">
+    <form method="POST" class="space-y-5" action="../Controller/proposerOffrelog.php?id=<?= $commande_id ?>">
 
         <!-- Prix -->
         <div>

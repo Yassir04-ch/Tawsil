@@ -1,4 +1,6 @@
 <?php
+namespace Src\Entity;
+
 class Offre {
     private int $commande_id;
     private int $livreur_id;

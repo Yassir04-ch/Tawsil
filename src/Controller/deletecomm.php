@@ -1,10 +1,11 @@
 <?php
+namespace Src\Controller;
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Service\CommandeService;
 
-require_once '../Entity/Commande.php';
-require_once '../Repository/CommandeRepository.php';
-require_once '../Repository/OffreRepository.php';
-require_once '../Service/CommandeService.php';
 session_start();
 $id = $_GET['id'];
 $commandeser = new CommandeService();
 $commandeser->deletcom($id);
+header("location:../views/client.php");
+

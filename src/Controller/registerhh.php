@@ -1,11 +1,9 @@
 <?php 
-require_once '../Entity/User.php';
-require_once '../Entity/Admin.php';
-require_once '../Entity/Client.php';
-require_once '../Entity/Livreur.php';
-require_once '../Repository/UserRepository.php';
-require_once '../Service/AuthService.php';
+namespace Src\Controller;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
+use Src\Repository\UserRepository;
+use Src\Service\AuthService;
 session_start();
 if (!isset($_POST['submit'])) {
  header("location:../views/login.php");
@@ -21,5 +19,6 @@ $userepo = new UserRepository();
 $authser = new AuthService($userepo);
 
 $msg = $authser->register($fname,$lname,$email,$password,$role);
+header('location:../views/login.php');
 
 ?>

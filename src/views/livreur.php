@@ -1,6 +1,10 @@
 <?php
+
+namespace Src\View;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Repository\CommandeRepository;
 session_start();
-require_once 'src/Repository/CommandeRepository.php';
 $commandeRepo = new CommandeRepository();
 $commandes = $commandeRepo->commandelivreur();
 ?>

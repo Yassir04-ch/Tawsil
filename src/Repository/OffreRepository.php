@@ -1,7 +1,10 @@
 <?php
-require_once __DIR__ . '/../config/Database.php';
-class OffreRepository extends Database{
 
+namespace Src\Repository;
+use Src\Config\Database;
+use PDO;
+use Src\Entity\Offre;
+class OffreRepository extends Database{
     public function __construct(){
          parent::__construct();
     }

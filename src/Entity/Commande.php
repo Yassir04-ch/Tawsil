@@ -1,4 +1,5 @@
 <?php
+namespace Src\Entity;
 
 class Commande {
     private int $client_id;

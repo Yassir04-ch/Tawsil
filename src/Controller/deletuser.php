@@ -1,7 +1,8 @@
 <?php
-require_once '../Repository/AdminRepository.php';
-require_once '../Service/AdmineService.php';
+namespace Src\Controller;
+use Src\Service\AdmineService;
 $id = $_GET['id'];
 $adminser = new AdmineService();
 $adminser->desactiverconte($id);
+header("location:../views/utilisateurs.php");
 

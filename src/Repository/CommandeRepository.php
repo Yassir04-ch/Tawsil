@@ -1,6 +1,11 @@
 <?php
-require_once __DIR__ . '/../config/Database.php';
-class CommandeRepository extends Database{
+
+namespace Src\Repository;
+use Src\Config\Database;
+use PDO;
+use Src\Entity\Commande;
+
+ class CommandeRepository extends Database{
 
     public function __construct(){
          parent::__construct();
@@ -54,5 +59,6 @@ class CommandeRepository extends Database{
     $stmt = $this->conn->prepare($sql);
     $stmt->execute([$comid]);
     } 
+    
 
 }

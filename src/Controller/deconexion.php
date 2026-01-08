@@ -1,7 +1,9 @@
 <?php
-require_once '../Entity/User.php';
-require_once '../Repository/UserRepository.php';
-require_once '../Service/AuthService.php';
+namespace Src\Controller;
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Src\Repository\UserRepository;
+use Src\Service\AuthService;
+
 session_start();
 var_dump($_SESSION['id']);
 $userrepo = new UserRepository();
