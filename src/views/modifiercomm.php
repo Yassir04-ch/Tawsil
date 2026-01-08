@@ -47,7 +47,7 @@ $commande = $commanderep->getCommande( $id);
                 <p class="text-slate-500 mt-1">Mettez à jour les informations de votre colis avant qu'il ne soit pris en charge.</p>
             </div>
 
-            <form action="modifierlog.php" method="POST" class="p-8 space-y-8">
+            <form action="../Controler/modifierlog.php" method="POST" class="p-8 space-y-8">
                 
                 <input type="hidden" name="commande_id" value=<?=$commande['id']?>>
 

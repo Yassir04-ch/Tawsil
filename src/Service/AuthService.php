@@ -1,5 +1,4 @@
 <?php
-
 class AuthService{
 
     private $userrepo;
@@ -25,17 +24,20 @@ class AuthService{
           return "Email déjà utilisé!";
         }
         $this->userrepo->adduser($user);
-      header('location:login.php');
+      header('location:../views/login.php');
     }
 
     public function login($email,$password){
         $userdata = $this->userrepo->finduserbyemail($email);
         if (!$userdata) {
             return 'Email non trouvé';
-            
         }
         if($password !== $userdata['password']){
             return 'password incorect';
+        }
+        if ( $userdata['active'] = 3 ) {
+            header('location:../views/login.php');
+            exit;
         }
     $_SESSION['id'] = $userdata['id'];
     $_SESSION['firstname'] = $userdata['firstname'];
@@ -44,20 +46,21 @@ class AuthService{
     $_SESSION['role']      = $userdata['role'];
     
     $this->userrepo->updatactive($_SESSION['id'],1);
+    echo'bbb';
   
     if ($userdata['role']==='client') {
-        header('location:client.php');
+        header('location:../views/client.php');
     }
     elseif($userdata['role']==='livreur') {
-        header('location:livreur.php');
+        header('location:../views/livreur.php');
     }   
     else{
-        header('location:admin.php');
+        header('location:../views/admin.php');
     }
 }
 public function logout($id,$act){
-    $this->userrepo->updatactive($id,$act);
-    header('location:index.php');
+    $this->userrepo->updatactive($id,0);
+    header('location:../../index.php');
     session_destroy();
 }
 

@@ -1,5 +1,6 @@
 <?php
 
+
  abstract class User{
     protected string $firstname;
     protected string $lastname;

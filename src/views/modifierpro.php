@@ -27,7 +27,7 @@ if (!isset($_SESSION['role'])) {
         </div>
 
         <!-- Form -->
-        <form action="update-profile.php" method="POST" class="p-10 space-y-6">
+        <form action="../Controller/update-profile.php" method="POST" class="p-10 space-y-6">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Firstname -->
@@ -96,8 +96,7 @@ if (!isset($_SESSION['role'])) {
                     Enregistrer
                 </button>
 
-                <a 
-                    href="profile.php"
+                <a href="profile.php"
                     class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-8 py-4 rounded-2xl font-black transition"
                 >
                     Annuler

@@ -22,7 +22,7 @@ session_start();
             <p class="text-slate-400 font-medium mt-2">Votre coursier en un clic.</p>
         </div>
 
-        <form action="loginhh.php" method="POST" class="space-y-5">
+        <form action="../Controller/loginhh.php" method="POST" class="space-y-5">
             <div>
                 <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1">Email</label>
                 <input name="email" type="email" class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 transition outline-none" placeholder="nom@exemple.com">

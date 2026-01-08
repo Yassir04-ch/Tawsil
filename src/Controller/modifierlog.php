@@ -1,7 +1,7 @@
 <?php
-require_once 'src/Entity/Commande.php';
-require_once 'src/Repository/CommandeRepository.php';
-require_once 'src/Service/CommandeService.php';
+require_once '../Entity/Commande.php';
+require_once '../Repository/CommandeRepository.php';
+require_once '../Service/CommandeService.php';
 
 if (!isset($_POST['submit'])) {
  header('location:modifiercomm.php');

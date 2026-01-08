@@ -25,8 +25,8 @@ require './vendor/autoload.php';
             <div class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
                 <a href="#comment-ca-marche" class="hover:text-blue-600 transition">Comment ça marche ?</a>
                 <a href="#" class="hover:text-blue-600 transition">Tarifs</a>
-                <a href="login.php" class="text-slate-900 hover:text-blue-600 transition">Connexion</a>
-                <a href="register.php" class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">S'inscrire</a>
+                <a href="src/views/login.php" class="text-slate-900 hover:text-blue-600 transition">Connexion</a>
+                <a href="src/views/register.php" class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">S'inscrire</a>
             </div>
         </div>
     </nav>
@@ -97,7 +97,7 @@ require './vendor/autoload.php';
     </section>
 
     <footer class="py-10 border-t border-slate-100 text-center">
-        <p class="text-slate-400 text-sm">© 2025 SHIPUP Digital Solutions. Tous droits réservés.</p>
+        <p class="text-slate-400 text-sm">© 2025 LMSAKHARGO THE BEST SITE WEB FOR LIVRAISON</p>
     </footer>
 </body>
 </html>

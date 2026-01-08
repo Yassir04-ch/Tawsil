@@ -1,6 +1,6 @@
 <?php
-require_once 'src/Entity/Offre.php';
-require_once 'src/Repository/OffreRepository.php';
+require_once '../Entity/Offre.php';
+require_once '../Repository/OffreRepository.php';
 session_start();
 
 $commande_id = $_GET['id'];
@@ -89,7 +89,7 @@ $offres = $offresRep->affichoffres($commande_id);
             </div>
             <?php if ($_SESSION['role'] == 'client'): ?>
               <div class="flex gap-3 mt-4">
-                <form action="accepteoffre.php" method="POST" class="flex-1">
+                <form action="../Controller/accepteoffre.php" method="POST" class="flex-1">
                   <input type="hidden" name="commande_id" value="<?= $commande_id ?>">
                   <input type="hidden" name="offre_id" value="<?= $offre['id'] ?>">
                   <button type="submit"

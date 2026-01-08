@@ -18,7 +18,7 @@ require_once __DIR__ . '/../Repository/OffreRepository.php';
    
      $offreRepo = new OffreRepository();
      $offreRepo->addoffre($offre);
-     header("location:livreur.php");
+     header("location:../views/livreur.php");
 
    }
    public function accepteoffre($commande_id,$statuscom,$offre_id,$statusoff){
@@ -26,13 +26,13 @@ require_once __DIR__ . '/../Repository/OffreRepository.php';
     $offreRepo = new OffreRepository() ;
     $offreRepo->updatstatutcom($commande_id,$statuscom) ;
     $offreRepo->updatstatutoffre($offre_id, $statusoff) ;
-    header('location:client.php') ;
+    header('location:../views/client.php') ;
 
    }
    public function updatstatuscomm($id,$status){
       $offreRepo = new OffreRepository() ;
       $offreRepo->updatstatutcom($id,$status) ;
-      header('location:client.php');
+      header('location:../views/client.php');
 
    }
 

@@ -1,11 +1,11 @@
 <?php
-require_once 'src/Entity/Commande.php';
-require_once 'src/Repository/CommandeRepository.php';
-require_once 'src/Service/CommandeService.php';
+require_once '../Entity/Commande.php';
+require_once '../Repository/CommandeRepository.php';
+require_once '../Service/CommandeService.php';
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header('location:index.php');
+    header('location:../../index.php');
     exit;
 }
 

@@ -23,12 +23,6 @@ class UserRepository  extends Database{
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
-    // public function updateuser(User $user){
-    //     $sql = 'UPDATE users SET firstname = ?,lastname = ?,email = ?,password = ?,role = ?';
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->bindValue($user->setFirstame($user->firstname), $user->setlastame($user->lastname) ....);
-    //     $stmt->execute();
-    // }
     public function affichusers($id){
         $sql = 'SELECT * FROM users WHERE id != ?';
         $stmt = $this->conn->prepare($sql);

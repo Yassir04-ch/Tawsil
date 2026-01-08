@@ -18,7 +18,7 @@
                     <p class="text-slate-500 mt-2 font-medium">Rejoignez la communauté de livraison</p>
                 </div>
 
-<form action="registerhh.php" method="POST" class="space-y-5">
+<form action="../Controller/registerhh.php" method="POST" class="space-y-5">
 
     <!-- Prénom et Nom -->
     <div class="grid grid-cols-2 gap-4">
@@ -81,7 +81,7 @@
             </div>
         </div>
         
-        <a href="index.php" class="mt-8 text-slate-400 hover:text-slate-600 text-sm font-bold transition">
+        <a href="../../index.php" class="mt-8 text-slate-400 hover:text-slate-600 text-sm font-bold transition">
             <i class="fa-solid fa-arrow-left mr-2"></i> Retour à l'accueil
         </a>
 

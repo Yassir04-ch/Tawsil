@@ -1,7 +1,7 @@
 <?php 
-require_once 'src/Entity/Commande.php';
-require_once 'src/Repository/AdminRepository.php';
-require_once 'src/Service/AdmineService.php';
+require_once '../Entity/Commande.php';
+require_once '../Repository/AdminRepository.php';
+require_once '../Service/AdmineService.php';
 session_start();
 $admineser = new AdmineService() ;
 $commandes = $admineser->affichallcommandes();
@@ -88,7 +88,7 @@ $commandes = $admineser->affichallcommandes();
                                 </td>
                                 <td class="px-8 py-5">
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-black text-slate-800"><?= $command['firstname'] . $command['lastname'] ?></span>
+                                        <span class="text-sm font-black text-slate-800"><?= $command['firstname'] . " " . $command['lastname'] ?></span>
                                     </div>
                                 </td>
                                 <td class="px-8 py-5">
@@ -109,9 +109,6 @@ $commandes = $admineser->affichallcommandes();
                                 </td>
                                 <td class="px-8 py-5">
                                     <span class="text-sm font-black text-slate-900"><?= $command['description'] ?></span>
-                                </td>
-                                <td class="px-8 py-5 text-right">
-                                    <button class="p-2 text-slate-400 hover:text-blue-600 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                 </td>
                             </tr>
 

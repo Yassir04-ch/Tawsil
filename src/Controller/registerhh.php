@@ -1,14 +1,14 @@
 <?php 
-require_once 'src/Entity/User.php';
-require_once 'src/Entity/Admin.php';
-require_once 'src/Entity/Client.php';
-require_once 'src/Entity/Livreur.php';
-require_once 'src/Repository/UserRepository.php';
-require_once 'src/Service/AuthService.php';
+require_once '../Entity/User.php';
+require_once '../Entity/Admin.php';
+require_once '../Entity/Client.php';
+require_once '../Entity/Livreur.php';
+require_once '../Repository/UserRepository.php';
+require_once '../Service/AuthService.php';
 
 session_start();
 if (!isset($_POST['submit'])) {
- header("location:login.php");
+ header("location:../views/login.php");
  exit;
 }
 

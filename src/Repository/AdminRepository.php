@@ -11,5 +11,14 @@ require_once __DIR__ . '/../config/Database.php';
    $stmt->execute();
    return $stmt->fetchAll(PDO::FETCH_ASSOC);
  }
-
+ public function desactivertactive($id){
+        $sql = 'UPDATE users SET active = 3 WHERE id = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+    }
+ public function updaterole($id,$role){
+   $sql = 'UPDATE users SET role = ? WHERE id = ?';
+   $stmt = $this->conn->prepare($sql);
+   $stmt->execute([$id,$role]);
+  }
  }

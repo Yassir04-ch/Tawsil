@@ -9,4 +9,14 @@ class AdmineService{
         $admindrep = new AdminRepository();
         return $admindrep->afficheallcommande();
     }
+    public function desactiverconte($id){
+        $admindrep = new AdminRepository();
+       $admindrep->desactivertactive($id);
+       header("location:../views/utilisateurs.php");
+    }
+    public function updateroleuser($id,$role){
+        $admindrep = new AdminRepository();
+        $admindrep->updaterole($id,$role);
+
+    }
 }

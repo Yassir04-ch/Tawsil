@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['role'])) {
-    header('Location: login.php');
+    header('Location: ../views/login.php');
     exit;
 }
 ?>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['role'])) {
                     <a href="modifierpro.php" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-black shadow-lg shadow-blue-200 transition">
                         <i class="fa-solid fa-pen mr-2"></i> Modifier
                     </a>
-                    <a href="deconexion.php" class="bg-slate-200 hover:bg-red-500 hover:text-white text-slate-700 px-6 py-3 rounded-xl font-black transition">
+                    <a href="../Controller/deconexion.php" class="bg-slate-200 hover:bg-red-500 hover:text-white text-slate-700 px-6 py-3 rounded-xl font-black transition">
                         <i class="fa-solid fa-right-from-bracket mr-2"></i> Déconnexion
                     </a>
                 </div>

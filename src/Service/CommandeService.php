@@ -10,7 +10,7 @@ class CommandeService{
        );
     $commanderep = new CommandeRepository();
     $commanderep->addCommande($command);
-    header("location:client.php");
+    header("location:../views/client.php");
     }
     public function deletcom($id){
        $commandeRepo = new CommandeRepository();
@@ -18,11 +18,11 @@ class CommandeService{
        $offreRepo = new OffreRepository();
       $status = "Annulée";
       $offreRepo->updatstatutcom($id, $status);
-      header('location:client.php');
+      header('location:../views/client.php');
     }
 public function modifiercom($commande_id, $description, $adresse, $adresse_livraison){
   $commandeRepo = new CommandeRepository();
   $commandeRepo->modifierCommande($commande_id, $description, $adresse, $adresse_livraison);
-  header('location:client.php');
+  header('location:../views/client.php');
     }
 }

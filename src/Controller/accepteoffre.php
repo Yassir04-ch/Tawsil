@@ -1,6 +1,6 @@
 <?php
-require_once 'src/Entity/Offre.php';
-require_once 'src/Service/OffreService.php';
+require_once '../Entity/Offre.php';
+require_once '../Service/OffreService.php';
 session_start();
 $commande_id = $_POST['commande_id'];
 $offre_id = $_POST['offre_id'];

@@ -18,8 +18,7 @@ session_start();
 </head>
 <body class="bg-slate-50 flex h-screen overflow-hidden font-sans">
 
-    <!-- Sidebar -->
-    <aside class="w-72 bg-white border-r border-slate-200 flex flex-col z-50">
+     <aside class="w-72 bg-white border-r border-slate-200 flex flex-col z-50">
         <div class="p-8 border-b border-slate-50">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
@@ -60,7 +59,7 @@ session_start();
                     <p class="text-xs font-black text-white truncate"></p>
                     <p class="text-[10px] text-slate-400 truncate">admin@lmsakher.go</p>
                 </div>
-                <a href="deconexion.php"><button class="text-slate-500 hover:text-red-400"><i class="fa-solid fa-right-from-bracket"></i></button></a>
+                <a href="../Controller/deconexion.php"><button class="text-slate-500 hover:text-red-400"><i class="fa-solid fa-right-from-bracket"></i></button></a>
             </div>
         </div>
     </aside>
