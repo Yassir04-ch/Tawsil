@@ -20,7 +20,6 @@ $authser = new AuthService($userepo);
 
 $msg = $authser->register($fname,$lname,$email,$password,$role);
 $_SESSION['error'] = $msg;
-
 header('location:../views/register.php');
 
 ?>
