@@ -12,9 +12,9 @@ use Src\Entity\Commande;
     }
 
     public function addCommande(Commande $commande){
-     $sql = "INSERT INTO commandes (client_id,description,adresse,address_delivery,is_deleted) VALUES (?,?,?,?,?)";
+     $sql = "INSERT INTO commandes (client_id,description,adresse,address_delivery,status,is_deleted) VALUES (?,?,?,?,?,?)";
      $stmt = $this->conn->prepare($sql);
-     $stmt->execute([$commande->getClient_id(),$commande->getDescription(),$commande->getAdresse(),$commande->getAddress_delivery(), $commande->getIs_delete()]);
+     $stmt->execute([$commande->getClient_id(),$commande->getDescription(),$commande->getAdresse(),$commande->getAddress_delivery(),$commande->getStatus(), $commande->getIs_delete()]);
     }
     public function affichCommandes(int $clinetid){
        $sql = "SELECT * FROM commandes WHERE client_id = ? AND is_deleted = 0";
@@ -59,6 +59,6 @@ use Src\Entity\Commande;
     $stmt = $this->conn->prepare($sql);
     $stmt->execute([$comid]);
     } 
-    
+     
 
 }

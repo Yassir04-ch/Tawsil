@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,16 +11,17 @@
     <title>Inscription - LmsakherGO</title>
 </head>
 <body class="bg-slate-50 min-h-screen">
-
     <div class="flex flex-col items-center justify-center pt-20 pb-12 px-6">
-        
         <div class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
             <div class="p-8">
                 <div class="text-center mb-8">
                  <h1 class="text-3xl font-black text-slate-900 tracking-tighter italic">Lmsakher<span class="text-blue-600">GO</span></h1>
                     <p class="text-slate-500 mt-2 font-medium">Rejoignez la communauté de livraison</p>
+            <?php if (isset(($_SESSION['error']))):?>
+             <p class='text-red-600 text-center font-medium mt-4'><?=$_SESSION['error'];?></p>
+          <?php endif;?>
                 </div>
-
+  
 <form action="../Controller/registerhh.php" method="POST" class="space-y-5">
 
     <!-- Prénom et Nom -->

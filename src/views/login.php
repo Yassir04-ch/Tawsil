@@ -22,6 +22,10 @@ session_start();
             <p class="text-slate-400 font-medium mt-2">Votre coursier en un clic.</p>
         </div>
 
+        <?php if (isset(($_SESSION['error']))):?>
+             <p class='text-red-600 text-center font-medium mt-4'><?=$_SESSION['error'];?></p>
+        <?php endif;?>
+
         <form action="../Controller/loginhh.php" method="POST" class="space-y-5">
             <div>
                 <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1">Email</label>

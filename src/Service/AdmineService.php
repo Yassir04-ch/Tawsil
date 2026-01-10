@@ -18,8 +18,28 @@ class AdmineService{
         $admindrep = new AdminRepository();
        $admindrep->desactivertactive($id);
     }
+     public function activeconte($id)
+     {
+        $admindrep = new AdminRepository();
+       $admindrep->activerconte($id);
+    }
     public function updateroleuser($id,$role){
         $admindrep = new AdminRepository();
         $admindrep->updaterole($id,$role);
+    }
+    public function totalprix(){
+        $admindrep = new AdminRepository();
+       $total =  $admindrep->totalrevenu();
+       return $total;
+    }
+    public function commandter(){
+        $admindrep = new AdminRepository();
+       $total =  $admindrep->commandeterminer();
+       return $total;
+    }
+    public function commandeannul(){
+          $admindrep = new AdminRepository();
+       $annule =  $admindrep->commandeannuler();
+       return $annule;
     }
 }

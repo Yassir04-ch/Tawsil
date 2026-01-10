@@ -13,4 +13,9 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $userrepo = new UserRepository();
 $authser = new AuthService ($userrepo);
-$authser->login($email,$password);
+$result = $authser->login($email,$password);
+if(isset($result['error'])) {
+$_SESSION['error'] = $result;
+header('location:../views/login.php');
+}
+

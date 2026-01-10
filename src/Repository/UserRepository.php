@@ -1,10 +1,11 @@
 <?php
 namespace Src\Repository;
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Src\Config\Database;
 use PDO;
-use Src\Entity\User;
+use Src\Abstract\User;
 class UserRepository  extends Database{
 
     public function __construct(){

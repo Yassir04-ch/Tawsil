@@ -1,12 +1,12 @@
 <?php
 namespace Src\Controller;
 require_once __DIR__ . '/../../vendor/autoload.php';
-use Src\Repository\CommandeRepository;
+use Src\Service\CommandeService;
 session_start();
-
 if (!isset($_SESSION['id'])) {
     header('location:../../index.php');
     exit;
 }
-$commanderep = new CommandeRepository();
-$commandes = $commanderep->affichCommandes($_SESSION['id']);
+$client_id = $_SESSION['id'];
+$commandeser = new CommandeService();
+$commandes = $commandeser->getcommandes($client_id);

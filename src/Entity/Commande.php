@@ -1,19 +1,20 @@
 <?php
 namespace Src\Entity;
-
 class Commande {
     private int $client_id;
     private string $description;
     private string $adresse;
     private string $address_delivery;
     private $created_at;
+    private string $status;
     private bool $is_delete;
     
-    public function __construct(int $client_id,string $description, string $address_delivery,string $adresse , bool $is_delete ){
+    public function __construct(int $client_id,string $description, string $address_delivery,string $adresse ,string $status, bool $is_delete ){
         $this->client_id = $client_id;
-        $this->description = $description;
-        $this->adresse = $adresse;
+        $this->description = $description; 
         $this->address_delivery = $address_delivery;
+        $this->adresse = $adresse;
+        $this->status = $status;
         $this->is_delete = $is_delete;
     }
 
@@ -80,4 +81,18 @@ class Commande {
                 $this->address_delivery = $address_delivery;
 
         }
+
+    
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+
+    
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+     }
 }

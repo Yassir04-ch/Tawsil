@@ -1,12 +1,6 @@
 <?php
-require_once '../Entity/Offre.php';
-require_once '../Repository/OffreRepository.php';
-session_start();
+require_once __DIR__ ."/../Controller/affichoff.php";
 
-$commande_id = $_GET['id'];
-
-$offresRep = new OffreRepository();
-$offres = $offresRep->affichoffres($commande_id);
 ?>
 
 <!DOCTYPE html>
@@ -18,27 +12,8 @@ $offres = $offresRep->affichoffres($commande_id);
   <title>Offres - Client</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    body.modal-open {
-      overflow: hidden;
-    }
+  <link rel="stylesheet" href="../Utils/style.css">
 
-    .modal-animate {
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  </style>
 </head>
 
 <body class="bg-slate-50 font-sans text-slate-900">

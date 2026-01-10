@@ -1,12 +1,6 @@
 <?php
-
-namespace Src\View;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-use Src\Repository\CommandeRepository;
-session_start();
-$commandeRepo = new CommandeRepository();
-$commandes = $commandeRepo->commandelivreur();
+    require_once __DIR__ ."/../Controller/affichcommdeliv.php";
+  
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,7 +68,18 @@ $commandes = $commandeRepo->commandelivreur();
                     <div class="space-y-4">
                         <p class="text-sm font-semibold text-slate-700">Départ: <span class="text-slate-400 ml-2 font-medium italic text-xs"><?= $commande['adresse'] ?></span></p>
                         <p class="text-sm font-semibold text-slate-700">Arrivée: <span class="text-slate-400 ml-2 font-medium italic text-xs"><?= $commande['address_delivery'] ?></span></p>
-                    </div>  
+                    </div> 
+                        <?php if($commande['status'] === 'EN_cours'): ?>
+                                    <div class="lg:w-48 text-center p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
+                                        <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Livraison en cours</p>
+                                    </div>
+                                    <a href="../Controller/validercommande.php?id=<?= $commande['id'] ?>" class="flex-1 lg:w-48">
+                                        <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 rounded-2xl font-black text-xs shadow-xl shadow-emerald-100 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-tighter">
+                                            <i class="fa-solid fa-check-circle text-lg"></i>
+                                            Valider la réception
+                                        </button>
+                                    </a>
+                                <?php endif ;?> 
                 </div>
           <?php if($commande['status'] == 'En attente'): ?>
                 <a href="proposerOffre.php?id=<?= $commande['id'] ?>">

@@ -1,11 +1,6 @@
 <?php
-require_once '../Controller/affichcommclient.php'; 
-
-$statusSettings = [
-    'En attente' => ['class' => 'bg-amber-100 text-amber-700 border-amber-200', 'label' => 'En attente'],
-    'EN_cours'   => ['class' => 'bg-blue-100 text-blue-700 border-amber-200', 'label' => 'En cours'],
-    'Commande livrée' => ['class' => 'bg-emerald-100 text-emerald-700 border-emerald-200', 'label' => 'Livrée'],
-];
+require_once '../Controller/affichcommclient.php';
+ 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,21 +10,7 @@ $statusSettings = [
     <title>LmsakherGO - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .modal-animate { animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        body.modal-open { overflow: hidden; }
-        .route-line::before {
-            content: '';
-            position: absolute;
-            left: 11px;
-            top: 24px;
-            bottom: 24px;
-            width: 2px;
-            background: #e2e8f0;
-            z-index: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../Utils/style.css">
 </head>
 <body class="bg-slate-50 font-sans text-slate-900">
 
@@ -77,18 +58,15 @@ $statusSettings = [
 
     <div class="space-y-6">
         <?php if(!empty($commandes)): ?>
-            <?php foreach($commandes as $commande): 
- 
-              $statu = $statusSettings[$commande['status']] ;
-            ?>
+            <?php foreach($commandes as $commande): ?>
                 <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-all group overflow-hidden">
                     <div class="p-6 md:p-8">
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                             
                             <div class="flex-1 w-full">
                                 <div class="flex items-center gap-3 mb-4 flex-wrap">
-                                    <span class="<?= $statu['class'] ?> text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border">
-                                        <?= $statu['label'] ?>
+                                    <span class=" bg-blue-400 text-black-700 black-amber-200 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border">
+                                       <?= $commande['status'] ?>
                                     </span>
                                 </div> 
                                 
@@ -139,7 +117,7 @@ $statusSettings = [
                                     <div class="lg:w-48 text-center p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
                                         <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Livraison en cours</p>
                                     </div>
-                                    <a href="../Controler/validercommande.php?id=<?= $commande['id'] ?>" class="flex-1 lg:w-48">
+                                    <a href="../Controller/validercommande.php?id=<?= $commande['id'] ?>" class="flex-1 lg:w-48">
                                         <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 rounded-2xl font-black text-xs shadow-xl shadow-emerald-100 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-tighter">
                                             <i class="fa-solid fa-check-circle text-lg"></i>
                                             Valider la réception
@@ -194,26 +172,7 @@ $statusSettings = [
     </div>
 </div>
 
-<script>
-    const openModalBtn = document.getElementById('open-order-modal');
-    const modalBackdrop = document.getElementById('modal-backdrop');
-    const closeModalBtn = document.getElementById('close-modal');
-
-    openModalBtn.addEventListener('click', () => {
-        modalBackdrop.classList.remove('hidden');
-        document.body.classList.add('modal-open');
-    });
-    closeModalBtn.addEventListener('click', () => {
-        modalBackdrop.classList.add('hidden');
-        document.body.classList.remove('modal-open');
-    });
-    modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) {
-            modalBackdrop.classList.add('hidden');
-            document.body.classList.remove('modal-open');
-        }
-    });
-</script>
+<script src="../Utils/client.js"></script>
 
 </body>
 </html>

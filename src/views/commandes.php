@@ -1,13 +1,5 @@
 <?php 
-
-namespace Src\View;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-use Src\Service\AdmineService;
-session_start();
-$admineser = new AdmineService() ;
-$commandes = $admineser->affichallcommandes();
- 
+ require_once __DIR__ ."/../Controller/affichcommande.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +10,7 @@ $commandes = $admineser->affichallcommandes();
     <title>LmsakherGO - Gestion des Commandes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .sidebar-item-active { background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; color: #3b82f6; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    </style>
+    <link rel="stylesheet" href="../Utils/style.css">
 </head>
 <body class="bg-slate-50 flex h-screen overflow-hidden font-sans">
 
@@ -43,9 +31,6 @@ $commandes = $admineser->affichallcommandes();
             </a>
             <a href="utilisateurs.php" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition italic">
                 <i class="fa-solid fa-users w-5"></i> Utilisateurs
-            </a>
-            <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition italic">
-                <i class="fa-solid fa-truck-fast w-5"></i> Livreurs
             </a>
             <a href="#" class="sidebar-item-active flex items-center gap-4 p-4 rounded-2xl font-bold transition italic">
                 <i class="fa-solid fa-box w-5"></i> Commandes

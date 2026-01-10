@@ -19,6 +19,8 @@ $userepo = new UserRepository();
 $authser = new AuthService($userepo);
 
 $msg = $authser->register($fname,$lname,$email,$password,$role);
-header('location:../views/login.php');
+$_SESSION['error'] = $msg;
+
+header('location:../views/register.php');
 
 ?>

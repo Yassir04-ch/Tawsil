@@ -1,5 +1,4 @@
 <?php
-namespace Src\Controller;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Src\Entity\Commande;
 use Src\Service\CommandeService;
@@ -13,7 +12,7 @@ $description = $_POST['description'];
 $address_delivery = $_POST['address_delivery'];
 $adresse = $_POST['adresse'];
 $client_id = $_SESSION['id'];
-$commande = new Commande($client_id, $description,  $address_delivery, $adresse , 0);
+$commande = new Commande($client_id, $description,  $address_delivery, $adresse,'En attente' , 0);
 $commandeser = new CommandeService();
 $commandeser->addcommande($commande);
 header('location:../views/client.php');

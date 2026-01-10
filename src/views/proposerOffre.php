@@ -1,7 +1,5 @@
 <?php
 session_start();
-require_once '../Entity/Offre.php';
-require_once '../Service/OffreService.php';
 $commande_id = $_GET['id'];
 
 ?>

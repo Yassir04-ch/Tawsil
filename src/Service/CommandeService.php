@@ -24,4 +24,9 @@ class CommandeService{
        $commnd = $commandeRepo->getCommande( $id);
          return $commnd;
       }
+      public function getcommandes($client_id){
+      $commanderep = new CommandeRepository();
+      $commandes = $commanderep->affichCommandes($client_id);
+      return $commandes;
+      }
 }

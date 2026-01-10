@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require_once __DIR__ ."/../Controller/Statistiques.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,11 +10,7 @@ session_start();
     <title>LmsakherGO - Administration Système</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .sidebar-item-active { background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; color: #3b82f6; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    </style>
+    <link rel="stylesheet" href="../Utils/style.css">
 </head>
 <body class="bg-slate-50 flex h-screen overflow-hidden font-sans">
 
@@ -37,19 +33,9 @@ session_start();
             <a href="utilisateurs.php" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-users w-5"></i> Utilisateurs
             </a>
-            <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
-                <i class="fa-solid fa-truck-fast w-5"></i> Livreurs
-            </a>
             <a href="commandes.php" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
                 <i class="fa-solid fa-box w-5"></i> Commandes
             </a>
-
-            <div class="pt-8">
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 ml-4 italic">Configuration</p>
-                <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl font-bold transition">
-                    <i class="fa-solid fa-gears w-5"></i> Paramètres
-                </a>
-            </div>
         </nav>
 
         <div class="p-6 border-t border-slate-100">
@@ -88,7 +74,7 @@ session_start();
                         <span class="text-green-500 text-xs font-bold">+12% <i class="fa-solid fa-arrow-up"></i></span>
                     </div>
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Revenus Totaux</p>
-                    <h3 class="text-3xl font-black mt-2">42,500 <span class="text-sm font-medium">DH</span></h3>
+                    <h3 class="text-3xl font-black mt-2"><?=$total['total'] ?> <span class="text-sm font-medium">DH</span></h3>
                 </div>
                 
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
@@ -96,8 +82,8 @@ session_start();
                         <div class="p-3 bg-orange-50 text-orange-600 rounded-2xl"><i class="fa-solid fa-truck-ramp-box text-xl"></i></div>
                         <span class="text-blue-500 text-xs font-bold">+5 today</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Livreurs Actifs</p>
-                    <h3 class="text-3xl font-black mt-2">124</h3>
+                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Commande Annuler</p>
+                    <h3 class="text-3xl font-black mt-2"><?=$annuler['commannu'] ?></h3>
                 </div>
 
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
@@ -105,8 +91,8 @@ session_start();
                         <div class="p-3 bg-green-50 text-green-600 rounded-2xl"><i class="fa-solid fa-circle-check text-xl"></i></div>
                         <span class="text-slate-400 text-xs font-bold">98% Success</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Taux de livraison</p>
-                    <h3 class="text-3xl font-black mt-2">1,042</h3>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Commande livrée</p>
+                    <h3 class="text-3xl font-black mt-2"><?=$comm['commter'] ?></h3>
                 </div>
 
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
@@ -134,29 +120,6 @@ session_start();
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="bg-white text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] border-b">
-                            <tr>
-                                <th class="px-8 py-5">Utilisateur</th>
-                                <th class="px-8 py-5">Rôle / Accès</th>
-                                <th class="px-8 py-5">Score / Avis</th>
-                                <th class="px-8 py-5">Statut Compte</th>
-                                <th class="px-8 py-5 text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100" id="users-table">
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="p-6 bg-white border-t border-slate-50 flex justify-between items-center">
-                    <p class="text-xs text-slate-400 font-bold tracking-widest">AFFICHE 1-10 DE 1,280 RÉSULTATS</p>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 border rounded-xl text-xs font-black hover:bg-slate-50 transition">PRÉCÉDENT</button>
-                        <button class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-black shadow-lg shadow-blue-100 transition">SUIVANT</button>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
@@ -199,49 +162,7 @@ session_start();
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const openModalBtn = document.getElementById('open-admin-modal');
-            const adminModal = document.getElementById('admin-modal');
-            const closeModalBtns = document.querySelectorAll('#close-admin-modal');
-            const newStaffForm = document.getElementById('new-staff-form');
-
-            // Ouvrir modal
-            openModalBtn.addEventListener('click', () => {
-                adminModal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            });
-
-            // Fermer modal
-            closeModalBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    adminModal.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
-                });
-            });
-
-            // Fermer en cliquant en dehors
-            adminModal.addEventListener('click', (e) => {
-                if (e.target === adminModal) {
-                    adminModal.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
-                }
-            });
-
-            // Soumission du formulaire (exemple console.log)
-            newStaffForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const formData = new FormData(newStaffForm);
-                const data = Object.fromEntries(formData.entries());
-                console.log("Nouveau staff :", data);
-                // Ici tu peux envoyer les données à PHP via fetch
-                adminModal.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-                newStaffForm.reset();
-            });
-        });
-    </script>
+    <script src="../Utils/admin.js"></script>
 
 </body>
 </html>

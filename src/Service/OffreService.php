@@ -23,6 +23,11 @@ use Src\Repository\OffreRepository;
       header('location:../views/client.php');
 
    }
+   public function afficheoffres($commande_id) {
+    $offresRep = new OffreRepository();
+    $offres = $offresRep->affichoffres($commande_id);
+    return $offres;
+   }
 
 }
 

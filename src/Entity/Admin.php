@@ -1,9 +1,10 @@
 <?php
 namespace Src\Entity;
+use Src\Abstract\User;
 
 class Admin extends User{
 
-   public function __construct(string $firstname,string $lastname,string $email, $password, $role = "admin",$active){
+   public function __construct(string $firstname,string $lastname,string $email, $password, $role,$active){
         parent::__construct($firstname,$lastname, $email, $password,$role,$active );
     }
 
