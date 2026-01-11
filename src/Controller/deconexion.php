@@ -9,5 +9,4 @@ var_dump($_SESSION['id']);
 $userrepo = new UserRepository();
 $logout = new AuthService($userrepo);
 $id = $_SESSION['id'];
-$act = 0;
-$logout->logout($id,$act);
+$logout->logout($id);
