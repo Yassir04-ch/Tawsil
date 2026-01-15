@@ -37,7 +37,7 @@ namespace Src\Abstract;
          $this->email = $email; 
         }
 
-     abstract public function getRole();
+    abstract public function getRole();
 
     public function setRole(string $role){ 
         $this->role = $role; 

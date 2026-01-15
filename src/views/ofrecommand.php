@@ -72,7 +72,7 @@ require_once __DIR__ ."/../Controller/affichoff.php";
                     <i class="fa-solid fa-check mr-2"></i> Accepter
                   </button>
                 </form>
-                <form action="reject_offer.php" method="POST" class="flex-1">
+                <form action="#" method="POST" class="flex-1">
                   <input type="hidden" name="offre_id" value="<?= $offre['id'] ?>">
                   <button type="submit"
                     class="w-full bg-red-600 text-white py-3 rounded-xl font-black hover:bg-red-700 transition flex items-center justify-center">
