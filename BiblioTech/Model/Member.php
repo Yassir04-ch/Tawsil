@@ -14,7 +14,7 @@ class Member extends User{
    }
   
  public function listLivre(){
-   $sql = 'SELECT * FROM livre WHERE status !=reserve 
+   $sql = 'SELECT * FROM livre WHERE status !="reserve" 
    JOIN auteur ON auteur_id = auteur.id';
    $stmt = Database::getconn()->prepare($sql);
    $stmt->execute();
